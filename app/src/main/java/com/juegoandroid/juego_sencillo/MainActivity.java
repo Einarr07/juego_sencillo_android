@@ -17,6 +17,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.util.Log;
+import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -133,8 +136,23 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             if (colision(spaceship, meteorito)) {
                 // Colisión detectada, puedes hacer algo aquí como mostrar un mensaje de game over
             }
+
+            // Verificar si el meteorito pasó por la nave
+            if (nuevaPosicionY > spaceshipY + spaceship.getHeight()) {
+                // Incrementar los puntos cada vez que el meteorito pase por la nave
+                puntos += 5;
+
+                // Actualizar el TextView para mostrar los nuevos puntos
+                TextView textViewPuntos = findViewById(R.id.textViewPuntos);
+                textViewPuntos.setText("Puntos: " + puntos);
+
+                // Aquí puedes almacenar los puntos en una variable para su posterior almacenamiento en una base de datos
+            }
+
+
         }
     }
+
 
     private boolean colision(View view1, View view2) {
         Rect rect1 = new Rect((int) view1.getX(), (int) view1.getY(), (int) (view1.getX() + view1.getWidth()), (int) (view1.getY() + view1.getHeight()));

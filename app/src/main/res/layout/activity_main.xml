@@ -24,4 +24,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/nave" />
 
+    <!-- TextView para mostrar los puntos -->
+    <TextView
+        android:id="@+id/textViewPuntos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Puntos: 0"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

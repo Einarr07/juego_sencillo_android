@@ -1,13 +1,16 @@
-
-
-  # Juego Android 📽️
 <div>
 <p align='center'>
 <img src="https://esfot.epn.edu.ec/images/headers/logo_esfot_buho.png" alt="Esfot" width="300px">
 </p>
 </div>
 
-# Aplicativo de Juego 🎬
+  # Juego Android 🕹️
+<div>
+<p align='center'>
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.udemy.com%2Fes%2Ftopic%2Fandroid-game-development%2F&psig=AOvVaw3TCIaOkkCxIcfHmKGhpqkl&ust=1708915961237000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIDT2pm-xYQDFQAAAAAdAAAAABAE" alt="Android" width="300px">
+</p>
+</div>
+# Aplicativo de Juego 🎮
 - Mateo Congo
 - Dilan Flores
 - Nicole Motoche

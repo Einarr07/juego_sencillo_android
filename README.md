@@ -22,18 +22,22 @@
   
 ## Capturas de la ejecucion del juego ⛓️
 - Una vez descargada la aplicacion se logra entrar correctamente a la misma
+- 
 ![image](https://github.com/Einarr07/juego_sencillo_android/assets/85316345/ec2652cb-81d2-48b3-af6d-85ab2e33328a)
 
 - Por cada meteorito 🪨 que esquive la nave 🚀 se le sumaran puntos.
+- 
 ![image](https://github.com/Einarr07/juego_sencillo_android/assets/85316345/e2cbd9e4-fa15-4577-bc4d-e231dc195067)
 
 - Si la nave 🚀 llega a colisionar 🪨 es fin del juego la cual nos brinda dos opciones seguir jugando 🎮 o salir del juego 🏃‍♂️
+- 
 ![image](https://github.com/Einarr07/juego_sencillo_android/assets/85316345/b44cd0ce-e763-4b04-b00d-bd997db38cd1)
 
 ## Evidencia del correcto funcionamiento del juego 🚀🪨 
+
 <div>
 <p align='center'>
-<img src="https://github.com/Einarr07/juego_sencillo_android/assets/85316345/cf005c25-54cb-4350-a975-4ece28be1f8c" alt="evidencia" width="300px">
+<img src="https://github.com/Einarr07/juego_sencillo_android/assets/85316345/306642da-9223-49a4-8b12-9600c37e3869" alt="evidencia" width="300px">
 </p>
 </div>
 

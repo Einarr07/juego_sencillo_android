@@ -7,9 +7,10 @@
   # Juego Android 🕹️
 <div>
 <p align='center'>
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.xataka.com%2Fbasics%2Fmejores-juegos-para-android-seleccion-editores-xataka&psig=AOvVaw3TCIaOkkCxIcfHmKGhpqkl&ust=1708915961237000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIDT2pm-xYQDFQAAAAAdAAAAABAJ" alt="Android" width="300px">
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2FAndroidJuegos%2F&psig=AOvVaw3TCIaOkkCxIcfHmKGhpqkl&ust=1708915961237000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIDT2pm-xYQDFQAAAAAdAAAAABAQ" alt="Android" width="300px">
 </p>
 </div>
+
 # Aplicativo de Juego 🎮
 - Mateo Congo
 - Dilan Flores

@@ -7,6 +7,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,6 +21,8 @@ import java.util.List;
 import android.util.Log;
 import android.widget.TextView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -30,14 +33,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private int screenWidth, screenHeight;
     private List<ImageView> meteoritos;
     private int puntos;
-    private float velocidadMeteoritos = 15; // Ajusta la velocidad según tus necesidades
+    private float velocidadMeteoritos = 40; // Velocidad de meteoritos
     private int tamañoMinimoMeteorito = 150; // Tamaño mínimo del meteorito en píxeles
-    private int tamañoMaximoMeteorito = 300; // Tamaño máximo del meteorito en píxeles
-
-    private int cantidadMeteoritos = 5; // Cantidad de meteoritos que deseas mostrar en pantalla
-    private int intervaloMinimo = 1000; // Intervalo mínimo de tiempo en milisegundos
-    private int intervaloMaximo = 3000; // Intervalo máximo de tiempo en milisegundos
-
+    private int tamañoMaximoMeteorito = 400; // Tamaño máximo del meteorito en píxeles
+    private boolean colisionConMeteorito = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,17 +59,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         puntos = 0;
 
         generarMeteoritos();
+        sumarPuntosAutomaticamente(); // Comenzar a sumar puntos automáticamente cada 5 segundos
     }
 
     private void generarMeteoritos() {
-        for (int i = 0; i < cantidadMeteoritos; i++) {
+        for (int i = 0; i < 2; i++) { // Cantidad de meteoritos fija en 2 para simplificar
             ImageView meteorito = new ImageView(this);
             meteorito.setImageResource(R.drawable.meteorito);
 
-            // Generar un tamaño aleatorio para el meteorito dentro del rango especificado
             int tamañoMeteorito = tamañoMinimoMeteorito + (int) (Math.random() * (tamañoMaximoMeteorito - tamañoMinimoMeteorito));
 
-            // Ajustar la escala de la imagen del meteorito
             meteorito.setScaleType(ImageView.ScaleType.FIT_XY);
             meteorito.setAdjustViewBounds(true);
             meteorito.setMaxWidth(tamañoMeteorito);
@@ -88,8 +86,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -106,13 +102,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent event) {
         float x = event.values[0];
         float y = event.values[1];
-        float velocidadX = -x * 5; // Ajusta la velocidad según tus necesidades
-        float velocidadY = y * 5; // Ajusta la velocidad según tus necesidades
+        float velocidadX = -x * 100;
+        float velocidadY = y * 100;
 
         spaceshipX += velocidadX;
         spaceshipY += velocidadY;
 
-        // Limitar los movimientos de la nave dentro de los límites de la pantalla
         if (spaceshipX < 0) spaceshipX = 0;
         if (spaceshipX > screenWidth - spaceship.getWidth()) spaceshipX = screenWidth - spaceship.getWidth();
         if (spaceshipY < 0) spaceshipY = 0;
@@ -121,48 +116,97 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         spaceship.setX(spaceshipX);
         spaceship.setY(spaceshipY);
 
-        // Mover los meteoritos hacia abajo
         for (ImageView meteorito : meteoritos) {
             float nuevaPosicionY = meteorito.getY() + velocidadMeteoritos;
             meteorito.setY(nuevaPosicionY);
 
-            // Verificar si el meteorito está fuera de la pantalla y generarlo nuevamente en la parte superior
             if (nuevaPosicionY > screenHeight) {
                 meteorito.setY(0);
                 meteorito.setX((float) Math.random() * (screenWidth - meteorito.getWidth()));
             }
 
-            // Verificar colisiones con los meteoritos
             if (colision(spaceship, meteorito)) {
-                // Colisión detectada, puedes hacer algo aquí como mostrar un mensaje de game over
+                gameOver();
+                return;
             }
-
-            // Verificar si el meteorito pasó por la nave
-            if (nuevaPosicionY > spaceshipY + spaceship.getHeight()) {
-                // Incrementar los puntos cada vez que el meteorito pase por la nave
-                puntos += 5;
-
-                // Actualizar el TextView para mostrar los nuevos puntos
-                TextView textViewPuntos = findViewById(R.id.textViewPuntos);
-                textViewPuntos.setText("Puntos: " + puntos);
-
-                // Aquí puedes almacenar los puntos en una variable para su posterior almacenamiento en una base de datos
-            }
-
-
         }
     }
 
+    private void sumarPuntosAutomaticamente() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (!colisionConMeteorito) {
+                    puntos += 10; // Sumar 10 puntos cada 5 segundos
+                    actualizarPuntos();
+                }
+                handler.postDelayed(this, 3000); // Ejecutar de nuevo después de 5 segundos
+            }
+        }, 5000); // Comenzar después de 5 segundos
+    }
+
+    private void actualizarPuntos() {
+        TextView textViewPuntos = findViewById(R.id.textViewPuntos);
+        textViewPuntos.setText("Puntos: " + puntos);
+    }
+
+    private void gameOver() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("☠️☠️☠️☠️ Game Over ️☠️☠️☠️");
+        builder.setMessage("¡Has perdido! Tu nave ha sido destruida por un meteorito.\n\nPuntos obtenidos: " + puntos);
+        builder.setPositiveButton("Intentar de nuevo", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                reiniciarJuego();
+            }
+        });
+        builder.setNegativeButton("Salir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.setCancelable(false);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        sensorManager.unregisterListener(this);
+    }
 
     private boolean colision(View view1, View view2) {
         Rect rect1 = new Rect((int) view1.getX(), (int) view1.getY(), (int) (view1.getX() + view1.getWidth()), (int) (view1.getY() + view1.getHeight()));
         Rect rect2 = new Rect((int) view2.getX(), (int) view2.getY(), (int) (view2.getX() + view2.getWidth()), (int) (view2.getY() + view2.getHeight()));
-        return rect1.intersect(rect2);
-    }
 
+        rect1.inset(view1.getWidth() / 4, view1.getHeight() / 4);
+        rect2.inset(view2.getWidth() / 4, view2.getHeight() / 4);
+
+        if (rect1.intersect(rect2)) {
+            colisionConMeteorito = true;
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         // No es necesario hacer nada aquí
+    }
+
+    private void reiniciarJuego() {
+        puntos = 0;
+        actualizarPuntos();
+        eliminarMeteoritos();
+        generarMeteoritos();
+        colisionConMeteorito = false;
+        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        sumarPuntosAutomaticamente();
+    }
+
+    private void eliminarMeteoritos() {
+        for (ImageView meteorito : meteoritos) {
+            ((ConstraintLayout) findViewById(R.id.layout)).removeView(meteorito);
+        }
+        meteoritos.clear();
     }
 }

@@ -7,9 +7,10 @@
   # Juego Android 🕹️
 <div>
 <p align='center'>
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.genbeta.com%2Fdesarrollo%2Fjava-api-y-ejemplos&psig=AOvVaw166dtWvwqM-CykodAhlR-Y&ust=1708916277297000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMiInbC_xYQDFQAAAAAdAAAAABAE" alt="Android" width="300px">
+<img src="https://github.com/Einarr07/juego_sencillo_android/assets/85316345/d3bdfdaa-47aa-48c7-889e-ead9e1095c29" alt="Android" width="300px">
 </p>
 </div>
+
 
 # Aplicativo de Juego 🎮
 - Mateo Congo

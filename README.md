@@ -11,11 +11,18 @@
 </p>
 </div>
 
+
+https://github.com/Einarr07/juego_sencillo_android/assets/85316345/cf005c25-54cb-4350-a975-4ece28be1f8c
+
+
 # Aplicativo de Juego 🎮
 - Mateo Congo
 - Dilan Flores
 - Nicole Motoche
 - Erick Palomo
+
+## Capturas de la ejecucion del juego ⛓️
+- 
 
 
 ## Autores 🫱🏼‍🫲🏽

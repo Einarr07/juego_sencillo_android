@@ -11,18 +11,31 @@
 </p>
 </div>
 
-
-https://github.com/Einarr07/juego_sencillo_android/assets/85316345/cf005c25-54cb-4350-a975-4ece28be1f8c
-
-
 # Aplicativo de Juego 🎮
 - Mateo Congo
 - Dilan Flores
 - Nicole Motoche
 - Erick Palomo
 
+## Funcionamiento del juego 🚀🪨
+- El juego creado se trata sobre una nave espacial 🚀, la cual va a evitar colisionar con los meteoritos que se le acerquen 🪨, para que la nave se desvie de los meteoritos es necesario mover el celular dependiendo de la direccion que tome la nave. ⬅️ 📱 ➡️
+  
 ## Capturas de la ejecucion del juego ⛓️
-- 
+- Una vez descargada la aplicacion se logra entrar correctamente a la misma
+![image](https://github.com/Einarr07/juego_sencillo_android/assets/85316345/ec2652cb-81d2-48b3-af6d-85ab2e33328a)
+
+- Por cada meteorito 🪨 que esquive la nave 🚀 se le sumaran puntos.
+![image](https://github.com/Einarr07/juego_sencillo_android/assets/85316345/e2cbd9e4-fa15-4577-bc4d-e231dc195067)
+
+- Si la nave 🚀 llega a colisionar 🪨 es fin del juego la cual nos brinda dos opciones seguir jugando 🎮 o salir del juego 🏃‍♂️
+![image](https://github.com/Einarr07/juego_sencillo_android/assets/85316345/b44cd0ce-e763-4b04-b00d-bd997db38cd1)
+
+## Evidencia del correcto funcionamiento del juego 🚀🪨 
+<div>
+<p align='center'>
+<img src="https://github.com/Einarr07/juego_sencillo_android/assets/85316345/cf005c25-54cb-4350-a975-4ece28be1f8c" alt="evidencia" width="300px">
+</p>
+</div>
 
 
 ## Autores 🫱🏼‍🫲🏽

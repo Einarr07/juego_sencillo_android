@@ -39,8 +39,6 @@
   <video src="https://github.com/Einarr07/juego_sencillo_android/assets/85316345/306642da-9223-49a4-8b12-9600c37e3869" width="400" />
 </div>
     
-https://github.com/Einarr07/juego_sencillo_android/assets/85316345/306642da-9223-49a4-8b12-9600c37e3869
-
 
 ## Autores 🫱🏼‍🫲🏽
 

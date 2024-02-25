@@ -7,7 +7,7 @@
   # Juego Android 🕹️
 <div>
 <p align='center'>
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngegg.com%2Fes%2Fpng-nyeyj&psig=AOvVaw1KkQKXhpvVGg4ASQli71Il&ust=1708916160013000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLD_o_i-xYQDFQAAAAAdAAAAABAZ" alt="Android" width="300px">
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.genbeta.com%2Fdesarrollo%2Fjava-api-y-ejemplos&psig=AOvVaw166dtWvwqM-CykodAhlR-Y&ust=1708916277297000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMiInbC_xYQDFQAAAAAdAAAAABAE" alt="Android" width="300px">
 </p>
 </div>
 

@@ -24,6 +24,10 @@ import android.widget.TextView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager sensorManager;
@@ -37,11 +41,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private int tamañoMinimoMeteorito = 150; // Tamaño mínimo del meteorito en píxeles
     private int tamañoMaximoMeteorito = 400; // Tamaño máximo del meteorito en píxeles
     private boolean colisionConMeteorito = false;
+    private DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FirebaseApp.initializeApp(this);
+
+        // Inicializar la referencia a la base de datos de Firebase
+        database = FirebaseDatabase.getInstance().getReference();
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -98,6 +108,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager.unregisterListener(this);
     }
 
+    private void guardarDatosFirebase(int puntos, float posX, float posY) {
+        database.child("puntos").push().setValue(puntos);
+        database.child("nave").child("posX").setValue(posX);
+        database.child("nave").child("posY").setValue(posY);
+    }
+
     @Override
     public void onSensorChanged(SensorEvent event) {
         float x = event.values[0];
@@ -130,7 +146,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 return;
             }
         }
+        guardarDatosFirebase(puntos, spaceshipX, spaceshipY);
     }
+
+
 
     private void sumarPuntosAutomaticamente() {
         final Handler handler = new Handler();
